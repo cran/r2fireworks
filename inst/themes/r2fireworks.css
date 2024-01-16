@@ -1,0 +1,12 @@
+/*! r2fireworks | 2024 (c) Written by Obi Obianom, www.obianom.com | all rights reserved */
+
+canvas {
+	cursor: crosshair;
+	display: block;
+}
+
+#underfireworkskit00056{
+  position:absolute;
+  top:0px;
+  z-index:-9999
+}

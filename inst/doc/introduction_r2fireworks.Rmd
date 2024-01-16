@@ -1,0 +1,79 @@
+---
+title: "Introducing the r2fireworks R package: add celebratory fireworks to page"
+author: "Obinna N. Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introducing the r2fireworks R package: add celebratory fireworks to page}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+## The goal of this new R package is to provide functions that allow the addition of fireworks to an Rmarkdown or Shiny app
+
+Constitutes the following functions:
+  
+      - [x] useFireworks : include needed scripts in UI
+      
+      - [x] showFireworks: start the fireworks
+      
+      - [x] removeFireworks: remove the fireworks
+
+
+![](https://r2fireworks.obi.obianom.com/r2fireworks_out.gif)
+
+
+## Two sample apps
+
+```
+# simple example with automatic start
+library(shiny)
+library(r2fireworks)
+
+ui <- fluidPage(
+  useFireworks(),
+  shiny::tags$h1("Introducing r2fireworks"),
+  shiny::tags$p("Celebrate 4th of July and my R package!!!")
+)
+server <- function(input, output, session) {
+# optional. start fireworks on load
+  showFireworks(particleCount = 30)
+}
+
+shinyApp(ui, server)
+
+
+# example with start and stop buttons
+library(shiny)
+library(r2fireworks)
+
+ui <- fluidPage(
+  useFireworks(),
+  shiny::tags$h1("Here is the starts"),
+  shiny::tags$p("Celebrate 4th of July and my R package!!!"),
+  actionButton("startFW","Show and Start Fireworks, with speed x1"),
+  actionButton("startFWx4","Show and Start Fireworks, with speed x4"),
+  actionButton("startFWspx4","Show Fireworks, with particle burst size 10000"),
+  actionButton("stopFW","Remove Fireworks")
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$startFW,{
+    showFireworks()
+  })
+
+  observeEvent(input$startFWx4,{
+    showFireworks(speed = 4,particleCount = 50)
+  })
+
+  observeEvent(input$startFWspx4,{
+    showFireworks(speed = 1,particleCount = 10000)
+  })
+  observeEvent(input$stopFW,{
+    removeFireworks()
+  })
+}
+
+
+```

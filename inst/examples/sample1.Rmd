@@ -1,0 +1,20 @@
+---
+title: "r2fireworks: add celebratory fireworks to page"
+output:
+  html_document:
+    theme: default
+---
+
+## Hosted at https://github.com/oobianom/r2fireworks
+
+#### Example
+
+```{r}
+library(r2fireworks)
+useFireworks()
+addRmdFireworks(particleCount = 10, speed = 3)
+
+```
+
+
+Magna eget est lorem ipsum. Erat imperdiet sed euismod nisi porta lorem. Amet justo donec enim diam vulputate ut pharetra sit amet. Quis commodo odio aenean sed adipiscing diam donec. Lacus vestibulum sed arcu non odio. Odio eu feugiat pretium nibh ipsum consequat nisl vel pretium.
